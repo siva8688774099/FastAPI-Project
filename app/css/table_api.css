@@ -1,0 +1,21 @@
+.main-table {
+	border-collapse: collapse;
+}
+
+.main-table th ,.main-table td {
+	border: 1px solid black;
+	padding: 10px;
+}
+
+.main-table th {
+	background-color: #6c8ba5;
+	color: rgb(32, 27, 27);
+}
+
+.main-table tr:nth-child(odd) {
+	background-color: #b3a17c;
+}
+
+.main-table tr:nth-child(even) {
+	background-color: #8e8181;
+}
