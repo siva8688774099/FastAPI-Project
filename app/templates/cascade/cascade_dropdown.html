@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<center>
+		<h1>Create Cascading Dropdown</h1>
+		<form action="/login">
+			<select class="nav-bar" name="country" id="country" onchange="populateStates()">
+				<option value="">Select Country</option>
+				<option value="India">India</option>
+				<option value="USA">USA</option>
+			</select>
+			<select class="nav-bar" name="state" id="state" onchange="populateCities()">
+				<option value="">Select State</option>
+			</select>
+			<select class="nav-bar" name="city" id="city">
+				<option value="">Select City</option>
+			</select>
+			<div>
+				<button id="button" name="submit-button">Submit</button>
+			</div>
+		</form>
+	</center>
+	<script>
+		var states = {
+			"India": ["Delhi", "Mumbai", "Kolkata", "Chennai"],
+			"USA": ["New York", "Los Angeles", "Chicago", "Houston"]
+		}
+		var cities = {
+			"Delhi": ["Noida", "Gurgaon", "Faridabad"],
+			"Mumbai": ["Thane", "Navi Mumbai", "Kalyan"],
+			"Kolkata": ["Howrah", "Durgapur", "Asansol"],
+			"Chennai": ["Tambaram", "Avadi", "Ambattur"],
+			"New York": ["Manhattan", "Brooklyn", "Queens"],
+			"Los Angeles": ["Hollywood", "Beverly Hills", "Santa Monica"],
+			"Chicago": ["Downtown", "Lincoln Park", "Wicker Park"],
+			"Houston": ["Downtown", "Midtown", "Uptown"]
+		}
+
+		var countryID = document.getElementById("country");
+		var stateID = document.getElementById("state");
+		var cityID = document.getElementById("city");
+
+		function populateStates() {
+			var selectedCountry = countryID.value;
+			stateID.innerHTML = "<option value=''>Select State</option>";
+			cityID.innerHTML = "<option value=''>Select City</option>";
+			if (selectedCountry != "") {
+				for (var i = 0; i < states[selectedCountry].length; i++) {
+					var option = document.createElement("option");
+					option.value = states[selectedCountry][i];
+					option.text = states[selectedCountry][i];
+					stateID.appendChild(option);
+				}
+			}
+		}
+
+		function populateCities() {
+			var selectedState = stateID.value;
+			cityID.innerHTML = "<option value=''>Select City</option>";
+			if (selectedState != "") {
+				for (var i = 0; i < cities[selectedState].length; i++) {
+					var option = document.createElement("option");
+					option.value = cities[selectedState][i];
+					option.text = cities[selectedState][i];
+					cityID.appendChild(option);
+				}
+			}
+		}
+
+	</script>
+</body>
+</html>
+
+<style>
+	.nav-bar {
+		padding: 10px;
+		width: 250px;
+		margin: 10px;
+		border-radius: 5px;
+		border: 2px black solid;
+		font-weight: 400;
+		background-color: rgb(95, 82, 135);
+		color: rgb(109, 187, 89);
+		border-color: rgb(170, 139, 99);
+		transition:border-color 0.2s ease;
+	}
+	.nav-bar:hover {
+		background-color: rgb(75, 126, 139);
+		color: rgb(193, 186, 214);
+		cursor: pointer;
+		border-color: rgb(168, 51, 51);
+	}
+	button {
+		padding: 10px;
+		width: 150px;
+		margin: 10px;
+		border-radius: 5px;
+		border: 2px black solid;
+		font-weight: 400;
+		margin-top:50px;
+		background-color:rgb(111, 95, 86);
+		border-color: rgb(133, 170, 99);
+		cursor: pointer;
+		font-weight: 600;
+		font-size: large;
+	}
+</style>
