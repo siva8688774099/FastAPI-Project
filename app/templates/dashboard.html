@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>DashBoard</title>
+	<link rel="stylesheet" href="https://cdn.godigit.com/pdf_gen_1.css">
+</head>
+
+
+
+{% block content %}
+
+<body>
+	<div class="component" style="margin-top: 2%;">
+		<div class="main-div item" >
+			<img width="100%" height="100%" src="data:image/jpeg;base64,{{request.get('image')}}" alt="Uploaded Image">
+		</div>
+		<div class="item" style="width: 20%;">
+
+		</div>
+		<div class="item">
+			<h1 style="text-align: center;">Hi {{request.get('username')}}, <br>Kindly verify your Details</h1>
+			<table class="table-main">
+				<tr>
+					<th width="50%">Username</th>
+					<td width="50%">{{request.get("username")}}</td>
+				</tr>
+				<tr>
+					<th>Email</th>
+					<td>{{request.get("email")}}</td>
+				</tr>
+				<tr>
+					<th>Mobile</th>
+					<td>{{request.get("mobile")}}</td>
+				</tr>
+				<tr>
+					<th>Password</th>
+					<td>{{request.get("password	")}}</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</body>
+
+{% endblock content %}
+
+</html>
+
+<style>
+	.table-main {
+		border-collapse: collapse;
+		width: 25%;
+		margin: auto;
+		margin-top: 3%;
+	}
+	.table-main th, .table-main td {
+		border: 2px solid black;
+		padding: 5px;
+	}
+	body {
+		background-color: rgb(175, 195, 207);
+	}
+	.main-div {
+        width: 200px;
+        height: 200px;
+		border-radius: 50%;
+        overflow:hidden;
+		display: flex;
+    }
+
+    .main-div img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+</style>
